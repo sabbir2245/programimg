@@ -395,3 +395,133 @@ while (code >> opcode) {
 | `add` — modify value across scopes | 2 |
 | Error messages and output format | 1 |
 | **Total** | **10** |
+
+---
+
+## Problem 5: IDE-Style Find & Replace All (FIND / REPLACEALL)
+
+Implement a substring search and replace across all symbol names in all scopes — like an IDE's "Find in Files" and "Replace All" feature.
+
+### Commands
+
+| Command | Description | Syntax |
+|---------|-------------|--------|
+| `FIND <search>` | Across **all scopes**, list every symbol whose **name contains** `search` as a substring. Print scope ID, symbol name, and type. | `FIND count` |
+| `REPLACEALL <search> <replace>` | Across **all scopes**, for every symbol whose name contains `search`, **replace that substring** with `replace`, then move the entry to the correct hash bucket. | `REPLACEALL count num` |
+| `REPLACESCOPE <search> <replace>` | Same as `REPLACEALL` but only in the **current scope**. | `REPLACESCOPE count num` |
+
+### Rules
+
+- **Substring matching**: `FIND` and `REPLACEALL`/`REPLACESCOPE` match if `search` appears anywhere inside the symbol name (case-sensitive).
+- **Multiple occurrences**: If `search` appears multiple times in a name, **all** occurrences are replaced (e.g. `search="ab"`, name="abab", replace="x" → name becomes "xx").
+- **Hash bucket movement**: After renaming, the symbol's hash changes — it must be **deleted from the old bucket**, have its name updated, then **re-inserted** into the correct bucket.
+- **Conflict handling**: If the new name already exists in the same scope, skip that symbol, print a conflict warning, and continue with the next symbol.
+- **`FIND`** output: For each match, print: `Found in ScopeTable# <id>: <symbol_name> (<type>)`
+- **`REPLACEALL`/`REPLACESCOPE`** output: For each rename, print the deletion and insertion messages (same format as standard `I`/`D`). If skipped due to conflict, print: `Conflict: '<old_name>' -> '<new_name>' skipped in ScopeTable# <id>`
+- If no symbols match `search`, print `No matches found for '<search>'`.
+
+### Example
+
+Sample Input:
+```
+5
+I counter INT
+I countdown INT
+I account FLOAT
+S
+{
+I recount VAR
+I county INT
+FIND count
+REPLACESCOPE count num
+P C
+}
+REPLACEALL count num
+P A
+Q
+```
+
+Sample Output:
+```
+	ScopeTable# 1 created
+Cmd 1: I counter INT
+	Inserted in ScopeTable# 1 at position 1, 1
+Cmd 2: I countdown INT
+	Inserted in ScopeTable# 1 at position 2, 1
+Cmd 3: I account FLOAT
+	Inserted in ScopeTable# 1 at position 3, 1
+Cmd 4: S
+	ScopeTable# 2 created
+Cmd 5: I recount VAR
+	Inserted in ScopeTable# 2 at position 1, 1
+Cmd 6: I county INT
+	Inserted in ScopeTable# 2 at position 2, 1
+Cmd 7: FIND count
+	Found in ScopeTable# 1: counter (INT)
+	Found in ScopeTable# 1: countdown (INT)
+	Found in ScopeTable# 1: account (FLOAT)
+	Found in ScopeTable# 2: recount (VAR)
+	Found in ScopeTable# 2: county (INT)
+Cmd 8: REPLACESCOPE count num
+	Deleted 'recount' from ScopeTable# 2 at position 1, 1
+	Inserted in ScopeTable# 2 at position 3, 1
+	Deleted 'county' from ScopeTable# 2 at position 2, 1
+	Inserted in ScopeTable# 2 at position 2, 1
+Cmd 9: P C
+	ScopeTable# 2
+	1-->
+	2--> <numy,INT>
+	3--> <renum,VAR>
+Cmd 10: Q
+	ScopeTable# 2 removed
+Cmd 11: REPLACEALL count num
+	Deleted 'counter' from ScopeTable# 1 at position 1, 1
+	Inserted in ScopeTable# 1 at position 1, 1
+	Deleted 'countdown' from ScopeTable# 1 at position 2, 1
+	Inserted in ScopeTable# 1 at position 4, 1
+	Deleted 'account' from ScopeTable# 1 at position 3, 1
+	Inserted in ScopeTable# 1 at position 3, 1
+Cmd 12: P A
+	ScopeTable# 1
+	1--> <nunter,INT>
+	2-->
+	3--> <accnum,FLOAT>
+	4--> <numdown,INT>
+	ScopeTable# 2
+	1-->
+	2--> <numy,INT>
+	3--> <renum,VAR>
+Cmd 13: Q
+	ScopeTable# 2 removed
+	ScopeTable# 1 removed
+```
+
+### Implementation Steps
+
+1. Iterate through all scopes (from current to root or all scopes from root to current depending on the command).
+2. For each scope, iterate through all hash buckets and all entries in each bucket.
+3. Check if the symbol's `name` contains the `search` substring (e.g. `name.find(search) != string::npos`).
+4. Compute the new name by replacing all occurrences of `search` with `replace` in the name.
+5. Check for conflicts: does `new_name` already exist in this scope?
+6. If no conflict: delete the old entry, update the name, re-insert (which moves it to the correct bucket).
+7. If conflict: print the conflict message and skip.
+
+### Restrictions
+
+- STL not allowed
+- Must compile with `-fsanitize=address`
+- `FIND` does NOT modify the symbol table — only reads
+- Substring matching must be case-sensitive, exact substring match
+- After `REPLACEALL`/`REPLACESCOPE`, the `P A` command should reflect all changes
+
+### Marks Distribution
+
+| Task | Marks |
+|------|-------|
+| `FIND` — iterate all scopes and match substring | 2 |
+| `FIND` — correct output format with scope ID | 1 |
+| `REPLACESCOPE` — substring replace + bucket move | 2 |
+| `REPLACEALL` — iterate all scopes | 2 |
+| Conflict detection and skip behavior | 2 |
+| Multiple-occurrence replacement in a single name | 1 |
+| **Total** | **10** |
