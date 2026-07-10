@@ -1,0 +1,10 @@
+*.o
+symbol_table
+symbol_table_asan
+A1_sol
+B1_sol
+C1_sol
+A1_asan
+B1_asan
+C1_asan
+new_output.txt
