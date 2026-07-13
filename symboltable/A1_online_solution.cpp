@@ -14,8 +14,11 @@ class SymbolInfo {
     string extraInfo;
 
 public:
-    SymbolInfo(string name, string type, string extraInfo = "")
-        : name(name), type(type), extraInfo(extraInfo) {}
+    SymbolInfo(string name, string type, string extraInfo = "") {
+        this->name = name;
+        this->type = type;
+        this->extraInfo = extraInfo;
+    }
 
     string getName() { return name; }
     string getType() { return type; }
@@ -48,8 +51,11 @@ public:
 
     int getTotalBuckets() { return total_buckets; }
 
-    ScopeTable(int buckets, string id, ScopeTable* parent = nullptr)
-        : total_buckets(buckets), scope_id(id), child_counter(1), parentScope(parent) {
+    ScopeTable(int buckets, string id, ScopeTable* parent = nullptr) {
+        total_buckets = buckets;
+        scope_id = id;
+        child_counter = 1;
+        parentScope = parent;
         table = new mylist<SymbolInfo>[buckets];
         out << "\tScopeTable# " << scope_id << " created" << endl;
     }
@@ -103,17 +109,15 @@ public:
     }
 
     bool Delete(string name) {
-        auto& bucket = getBucket(name);
-        int bucketIdx = SDBMHash(name) + 1;
-        int pos = 0;
+        unsigned int hash = SDBMHash(name);
+        int bucketIdx = hash + 1;
+        int pos;
 
-        auto remover = [&](SymbolInfo& si) {
-            pos++;
-            return si.getName() == name;
-        };
-
-        if (bucket.remove_if(remover)) {
-            out << "\tDeleted '" << name << "' from ScopeTable# " << scope_id << " at position " << bucketIdx << ", " << pos << endl;
+        if (table[hash].remove(name, pos)) {
+            out << "\tDeleted '" << name
+                << "' from ScopeTable# " << scope_id
+                << " at position " << bucketIdx
+                << ", " << pos << endl;
             return true;
         }
 
@@ -170,7 +174,9 @@ class SymbolTable {
     int bucketSize;
 
 public:
-    SymbolTable(int bucketSize) : currentScope(nullptr), bucketSize(bucketSize) {
+    SymbolTable(int bucketSize) {
+        currentScope = nullptr;
+        this->bucketSize = bucketSize;
         currentScope = new ScopeTable(bucketSize, "1", nullptr);
     }
 

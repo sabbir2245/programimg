@@ -64,37 +64,41 @@ extern ostringstream out;
     // int getTotalBuckets() { return total_buckets; }
 
 // --- In SymbolTable, add Merge(): ---
-    bool Merge() {
-        if (!currentScope || !currentScope->getParentScope()) return false;
+  bool Merge() {
+        if (!currentScope || !currentScope->getParentScope()) {
+            return false;
+        }
 
         ScopeTable* child = currentScope;
         ScopeTable* parent = currentScope->getParentScope();
 
-        bool conflict = false;
-        for (int i = 0; i < bucketSize && !conflict; i++) {
-            child->getBucketByIndex(i).for_each([&](SymbolInfo& si) {
+        // 1. Check for any naming conflicts first
+        for (int i = 0; i < bucketSize; i++) {
+            // Using a clean range-based loop over the bucket's elements
+            for (const SymbolInfo& si : child->getBucketByIndex(i)) {
                 if (!parent->canInsert(si.getName())) {
                     out << "\tMerge failed: '" << si.getName()
                         << "' already exists in parent ScopeTable" << endl;
-                    conflict = true;
+                    return false; // Direct exit on first conflict
                 }
-            });
+            }
         }
-        if (conflict) return false;
 
+        // 2. Safe to merge: Copy symbols to parent
         for (int i = 0; i < bucketSize; i++) {
-            child->getBucketByIndex(i).for_each([&](SymbolInfo& si) {
+            for (const SymbolInfo& si : child->getBucketByIndex(i)) {
                 parent->Insert(si.getName(), si.getType(), si.getExtraInfo());
-            });
+            }
         }
 
+        // 3. Update state and clean up child scope
         currentScope = parent;
         out << "\tScopeTable# " << child->getScopeId()
             << " merged with ScopeTable# " << parent->getScopeId() << endl;
+            
         delete child;
         return true;
     }
-
 // --- In processCommand, handle 'M': ---
     // } else if (cmd == "M") {
     //     st.Merge();
@@ -261,22 +265,23 @@ public:
             int bucketIdx = i + 1;
 
             while (true) {
-                string name;
                 int pos = 0;
-                mylist<SymbolInfo>::Node* node = bucket.find_if([&](SymbolInfo& si) {
+                string name;
+                bool found = false;
+
+                for (auto it = bucket.begin(); it != bucket.end(); ++it) {
                     pos++;
-                    if (si.getType() == type) {
-                        name = si.getName();
-                        return true;
+                    if (it->getType() == type) {
+                        name = it->getName();
+                        found = true;
+                        break;
                     }
-                    return false;
-                });
-                if (!node) break;
+                }
 
-                bucket.remove_if([&](SymbolInfo& si) {
-                    return si.getName() == name;
-                });
+                if (!found) break;
 
+                int removePos;
+                bucket.remove(name, removePos);
                 out << "\tDeleted '" << name << "' from ScopeTable# "
                     << scope_id << " at position " << bucketIdx
                     << ", " << pos << endl;

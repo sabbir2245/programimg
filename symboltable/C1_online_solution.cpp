@@ -15,12 +15,17 @@ class SymbolInfo {
     bool scopeLocal;
 
 public:
-    SymbolInfo(string name, string type, string extraInfo = "", bool scopeLocal = false)
-        : name(name), type(type), extraInfo(extraInfo), scopeLocal(scopeLocal) {}
+    SymbolInfo(string name, string type, string extraInfo = "", bool scopeLocal = false) {
+        this->name = name;
+        this->type = type;
+        this->extraInfo = extraInfo;
+        this->scopeLocal = scopeLocal;
+    }
 
     string getName() { return name; }
     string getType() { return type; }
     string getExtraInfo() { return extraInfo; }
+    // ====================================================
     bool isScopeLocal() { return scopeLocal; }
 };
 
@@ -53,13 +58,17 @@ class ScopeTable {
     int getTotalBuckets() { return total_buckets; }
 
 public:
-    ScopeTable(int buckets, int id, ScopeTable* parent = nullptr)
-        : total_buckets(buckets), scope_id(id), parentScope(parent) {
+    ScopeTable(int buckets, int id, ScopeTable* parent = nullptr) {
+        total_buckets = buckets;
+        scope_id = id;
+        parentScope = parent;
         table = new mylist<SymbolInfo>[buckets];
         out << "\tScopeTable# " << scope_id << " created" << endl;
     }
 
     int getScopeId() { return scope_id; }
+
+    //================
     ScopeTable* getParentScope() { return parentScope; }
 
     bool Insert(string name, string type, string extra = "", bool scopeLocal = false) {
@@ -106,17 +115,15 @@ public:
     }
 
     bool Delete(string name) {
-        auto& bucket = getBucket(name);
-        int bucketIdx = SDBMHash(name) + 1;
-        int pos = 0;
+        unsigned int hash = SDBMHash(name);
+        int bucketIdx = hash + 1;
+        int pos;
 
-        auto remover = [&](SymbolInfo& si) {
-            pos++;
-            return si.getName() == name;
-        };
-
-        if (bucket.remove_if(remover)) {
-            out << "\tDeleted '" << name << "' from ScopeTable# " << scope_id << " at position " << bucketIdx << ", " << pos << endl;
+        if (table[hash].remove(name, pos)) {
+            out << "\tDeleted '" << name
+                << "' from ScopeTable# " << scope_id
+                << " at position " << bucketIdx
+                << ", " << pos << endl;
             return true;
         }
 
@@ -130,22 +137,23 @@ public:
             int bucketIdx = i + 1;
 
             while (true) {
-                string name;
                 int pos = 0;
-                mylist<SymbolInfo>::Node* node = bucket.find_if([&](SymbolInfo& si) {
+                string name;
+                bool found = false;
+
+                for (auto it = bucket.begin(); it != bucket.end(); ++it) {
                     pos++;
-                    if (si.getType() == type) {
-                        name = si.getName();
-                        return true;
+                    if (it->getType() == type) {
+                        name = it->getName();
+                        found = true;
+                        break;
                     }
-                    return false;
-                });
-                if (!node) break;
+                }
 
-                bucket.remove_if([&](SymbolInfo& si) {
-                    return si.getName() == name;
-                });
+                if (!found) break;
 
+                int removePos;
+                bucket.remove(name, removePos);
                 out << "\tDeleted '" << name << "' from ScopeTable# " << scope_id << " at position " << bucketIdx << ", " << pos << endl;
             }
         }
@@ -185,7 +193,10 @@ class SymbolTable {
     int scopeCounter;
 
 public:
-    SymbolTable(int bucketSize) : currentScope(nullptr), bucketSize(bucketSize), scopeCounter(0) {
+    SymbolTable(int bucketSize) {
+        currentScope = nullptr;
+        this->bucketSize = bucketSize;
+        scopeCounter = 0;
         EnterScope();
     }
 

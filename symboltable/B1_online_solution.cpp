@@ -14,8 +14,11 @@ class SymbolInfo {
     int value;
     int declLine;
 public:
-    SymbolInfo(string name, int declLine)
-        : name(name), value(0), declLine(declLine) {}
+    SymbolInfo(string name, int declLine) {
+        this->name = name;
+        value = 0;
+        this->declLine = declLine;
+    }
 
     string getName() { return name; }
     int getValue() { return value; }
@@ -46,8 +49,10 @@ class ScopeTable {
     }
 
 public:
-    ScopeTable(int buckets, int id, ScopeTable* parent = nullptr)
-        : total_buckets(buckets), scope_id(id), parentScope(parent) {
+    ScopeTable(int buckets, int id, ScopeTable* parent = nullptr) {
+        total_buckets = buckets;
+        scope_id = id;
+        parentScope = parent;
         table = new mylist<SymbolInfo>[buckets];
         out << "\tScopeTable# " << scope_id << " created" << endl;
     }
@@ -103,7 +108,10 @@ class SymbolTable {
     int scopeCounter;
 
 public:
-    SymbolTable(int bucketSize) : currentScope(nullptr), bucketSize(bucketSize), scopeCounter(0) {
+    SymbolTable(int bucketSize) {
+        currentScope = nullptr;
+        this->bucketSize = bucketSize;
+        scopeCounter = 0;
         EnterScope();
     }
 

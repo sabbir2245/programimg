@@ -15,8 +15,11 @@ class SymbolInfo {
     //SymbolInfo* next;  // dead code — never read
 
 public:
-    SymbolInfo(string name, string type, string extraInfo = "")
-        : name(name), type(type), extraInfo(extraInfo)/*, next(nullptr)*/ {}
+    SymbolInfo(string name, string type, string extraInfo = "") {
+        this->name = name;
+        this->type = type;
+        this->extraInfo = extraInfo;
+    }
 
     string getName() { return name; }
     string getType() { return type; }
@@ -56,8 +59,10 @@ class ScopeTable {
     }
 
 public:
-    ScopeTable(int buckets, int id, ScopeTable* parent = nullptr)
-        : total_buckets(buckets), scope_id(id), parentScope(parent) {
+    ScopeTable(int buckets, int id, ScopeTable* parent = nullptr) {
+        total_buckets = buckets;
+        scope_id = id;
+        parentScope = parent;
         table = new mylist<SymbolInfo>[buckets];
         out << "\tScopeTable# " << scope_id << " created" << endl;
     }
@@ -110,17 +115,14 @@ public:
 
     bool Delete(string name) {
         unsigned int hash = SDBMHash(name);
-        auto& bucket = table[hash];
         int bucketIdx = hash + 1;
-        int pos = 0;
+        int pos;
 
-        auto remover = [&](SymbolInfo& si) {
-            pos++;
-            return si.getName() == name;
-        };
-
-        if (bucket.remove_if(remover)) {
-            out << "\tDeleted '" << name << "' from ScopeTable# " << scope_id << " at position " << bucketIdx << ", " << pos << endl;
+        if (table[hash].remove(name, pos)) {
+            out << "\tDeleted '" << name
+                << "' from ScopeTable# " << scope_id
+                << " at position " << bucketIdx
+                << ", " << pos << endl;
             return true;
         }
 
@@ -162,7 +164,10 @@ class SymbolTable {
     int scopeCounter;
 
 public:
-    SymbolTable(int bucketSize) : currentScope(nullptr), bucketSize(bucketSize), scopeCounter(0) {
+    SymbolTable(int bucketSize) {
+        currentScope = nullptr;
+        this->bucketSize = bucketSize;
+        scopeCounter = 0;
         EnterScope();
     }
 
@@ -384,8 +389,8 @@ int main(int argc, char* argv[]) {
     fout << out.str();
     fout.close();
 
-    //cout << "--- Comparing with sample output ---" << endl;
-   // check_diff("sample_output.txt", outputFile);
+    cout << "--- Comparing with sample output ---" << endl;
+   check_diff("sample_output.txt", outputFile);
 
     inFile.close();
     return 0;

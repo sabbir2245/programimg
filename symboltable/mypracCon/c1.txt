@@ -1,0 +1,70 @@
+roblem Statement
+Task 1
+Create a command called DT (Delete Type). This will take an argument - type. Example -
+DT INT
+This will delete all symbols (in the entire symbol table) with the given type - INT
+Task 2
+Create a command called IS which is used to insert a scope-local symbol. These are symbols
+that are only visible to their own container scope but neither by their descendant scopes
+nor by their ancestor scopes. For example, consider the following example -
+1 int x; ----> let's say x is a scope-local symbol
+2 {
+3 ----> x is invisible here
+4 }
+Here if x is a scope-local symbol then it won’t be visible in line 3. Because line 3 is in a
+descendant scope of the scope-local variable.
+Restrictions
+•You can add any attribute to any existing classes.
+•STL not allowed
+•Must compile with -fsanitize=address
+1
+CSE 310: January 2026
+Examples
+Sample Input
+3
+I x VAR
+I y INT
+IS s VAR
+L s
+S
+I z INT
+DT INT
+P A
+L s
+Q
+Sample Output
+ScopeTable# 1 created
+Cmd 1: I x VAR
+Inserted in ScopeTable# 1 at position 1, 1
+Cmd 2: I y INT
+Inserted in ScopeTable# 1 at position 2, 1
+Cmd 3: IS s VAR
+Inserted in ScopeTable# 1 at position 2, 2
+Cmd 4: L s
+'s' found in ScopeTable# 1 at position 2, 2
+Cmd 5: S
+ScopeTable# 2 created
+Cmd 6: I z INT
+Inserted in ScopeTable# 2 at position 3, 1
+Cmd 7: DT INT
+Deleted 'z' from ScopeTable# 2 at position 3, 1
+Deleted 'y' from ScopeTable# 1 at position 2, 1
+Cmd 8: P A
+ScopeTable# 2
+1-->
+2-->
+3-->
+ScopeTable# 1
+1--> <x,VAR>
+2--> <s,VAR>
+3-->
+Cmd 9: L s
+'s' not found in any of the ScopeTables
+Cmd 10: Q
+ScopeTable# 2 removed
+ScopeTable# 1 removed
+Marks Distribution
+Task Marks
+Type deletion 6
+Scope-local symbols 4
+Total 10
