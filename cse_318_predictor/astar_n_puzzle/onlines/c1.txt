@@ -1,0 +1,33 @@
+n the original puzzle, every move had cost 1. In this task, moving a tile has a cost based
+on the face value of the tile and the number of times that tile has already been moved.
+The blank tile 0 does not have any movement cost. The cost of a move is determined by the
+tile that slides into the blank position.
+Tile Fatigue Rule
+The first time a tile is moved, its cost is equal to its face value.
+The second time the same tile is moved, its cost becomes twice its face value.
+The third time the same tile is moved, its cost becomes three times its face value, and so on.
+For example, for tile 7:
+•First movement of tile 7: cost 7
+•Second movement of tile 7: cost 14
+•Third movement of tile 7: cost 21
+Therefore, the cost of moving a tile depends on how many times that tile has already been
+moved in the current solution path.
+Required Modification
+Update your A* search so that g(n) represents the total path cost from the initial board
+to the current board.
+1
+Heuristic Function
+Use the weighted Manhattan distance as the heuristic:
+h(n) = ∑
+tiles t
+t ×(|rt−r∗t|+ |ct−c∗t|)
+Here, (rt, ct) is the current position of tile t, and (r∗t, c∗t) is the goal position of tile t.
+The blank tile 0 should not be included in the heuristic calculation.
+For the heuristic, you may ignore the tile fatigue cost. The fatigue rule only needs to be
+applied when updating g(n).
+Output
+Your program should print the minimum total cost.
+Then print the solution path from the initial board to the goal board, along with the total
+cost for each step.
+If the puzzle is unsolvable, print:
+Unsolvable puzzle

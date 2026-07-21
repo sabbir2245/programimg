@@ -1,0 +1,30 @@
+Modify your existing N-Puzzle solver so that the board behaves like a torus. If the blank
+moves out of one edge of the board, it should appear from the opposite edge.
+For example, moving left from the first column takes the blank to the last column of the same
+row. Similarly, moving up from the first row takes it to the last row of the same column.
+You may assume that all input boards are solvable. Do not use the old inversion-parity
+solvability check.
+Additional Rule: Wraparound Move Cost
+Each normal move costs 1.
+Each wraparound move costs 2.
+So your program should print the minimum total cost, not simply the minimum number
+of moves.
+Heuristic Function
+Use toroidal Manhattan distance as the heuristic.
+Let k be the board size. For a k ×k board, each tile position is represented by its row and
+column.
+For a tile t, let its current position be (rt, ct) and its goal position be (r∗t , c∗t ).
+∆rt = |rt −r∗t |, ∆ct = |ct −c∗t |
+dr(t) = min(∆rt, k −∆rt)
+dc(t) = min(∆ct, k −∆ct)
+1
+Therefore,
+h(n) = ∑
+tiles t
+(dr(t) + dc(t))
+The blank tile 0should not be included in the heuristic calculation.
+Output
+Print the minimum total cost and the complete board sequence from the initial board to the
+goal board.
+Here, the cost printed with each step should represent the accumulated path cost from the
+initial board to that board configuration.
