@@ -187,6 +187,11 @@ void unput(int c) {
     if (c != EOF && pos > 0) pos--;
 }
 
+int peek() {
+    if (pos >= content.size()) return EOF;
+    return (unsigned char)content[pos];
+}
+
 char resolveEscape(char esc) {
     switch (esc) {
         case 'n':  return '\n'; case 't':  return '\t'; case 'r':  return '\r';
@@ -249,11 +254,16 @@ void runLexer() {
             if (c == ' ' || c == '\t') continue;
             if (c == '\n') { lineNo++; continue; }
 
-            if (c == '/' && (c = yyinput()) == '/') {
-                buf = "//"; state = LINE_COMMENT; continue;
-            } else if (c == '*') {
-                buf = "/*"; startLine = lineNo; state = COMMENT; continue;
-            } else if (c != EOF) unput(c);
+            if (c == '/') {
+                int n = yyinput();
+                if (n == '/') {
+                    buf = "//"; state = LINE_COMMENT; continue;
+                } else if (n == '*') {
+                    buf = "/*"; startLine = lineNo; state = COMMENT; continue;
+                } else {
+                    if (n != EOF) unput(n);
+                }
+            }
 
             if (c == '"') {
                 buf = "\""; decoded = ""; startLine = lineNo; state = STRING; continue;
@@ -372,9 +382,9 @@ void runLexer() {
 
         } else if (state == COMMENT) {
             c = yyinput();
-            if (c == '*' && (c = yyinput()) == '/') {
-                buf += "*/"; state = INITIAL;
-                printLog("COMMENT", buf);
+            if (c == '*') {
+                if (peek() == '/') { yyinput(); buf += "*/"; state = INITIAL; printLog("COMMENT", buf); }
+                else { buf += '*'; }
             } else if (c == EOF) {
                 flog << "Error at line no " << startLine << ": Unterminated comment " << buf << endl << endl;
                 errorCount++; state = INITIAL; break;
@@ -382,7 +392,6 @@ void runLexer() {
                 buf += '\n'; lineNo++;
             } else {
                 buf += (char)c;
-                if (c != EOF && (char)c == '*') unput(c);
             }
 
         } else if (state == STRING) {
