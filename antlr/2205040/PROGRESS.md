@@ -21,25 +21,27 @@
 - [x] Grammar compiles cleanly with `antlr4` (no errors/warnings), generates C++ lexer/parser/visitor
 - [x] Dangling-`else` ambiguity resolved (ANTLR binds `else` to nearest `if`, verified with nested case)
 - [x] C++ build via `run-script.sh` works; runs on sample `.c` input
-- [ ] ID-prefixed submission copies (`2205040_CSubset.g4`, `2205040_Lexer.g4`) — deferred to submission packaging
+- [x] ID-prefixed grammars named `id2205040_CSubset.g4` / `id2205040_Lexer.g4` (letter-prefix so they compile with ANTLR)
 
 ## Part 2 — Syntax Analysis (Parser + Logging + Symbol Table)
-- [ ] Token-attribute logging (`$ID.text` / `ctx->getStart()->getLine()`)
-- [ ] `variableDeclaration`: insert all declared IDs into symbol table (e.g. `int a,b,c;`)
-- [ ] Print each matched rule + code segment to `log.txt` in order
-- [ ] Print symbol table when a scope exits (before scope removal)
-- [ ] Print symbol table after parsing finishes
-- [ ] Syntax errors with line numbers → `error.txt`
-- [ ] Print line count + error count at end of `log.txt`
+- [x] Token-attribute logging (`$ID.text` / `ctx->getStart()->getLine()`)
+- [x] `variableDeclaration`: insert all declared IDs into symbol table (e.g. `int a,b,c;`)
+- [x] Print each matched rule + code segment to `log.txt` in order
+- [x] Print symbol table when a scope exits (before scope removal)
+- [x] Print symbol table after parsing finishes
+- [x] Syntax errors with line numbers → `error.txt`
+- [x] Print line count + error count at end of `log.txt`
+
+> Implementation: Visitor pattern (`SymbolTableVisitor.h/.cpp`) — no grammar actions. Files: `SymbolInfo.h`, `SymbolTable.h`, `main.cpp` (custom `BaseErrorListener`). Note: ANTLR generates an abstract `CSubsetVisitor.h/.cpp`; `clean_updated.sh` removes runtime output + generated ANTLR files (`CSubsetLexer/Parser/BaseVisitor/Visitor`, `.tokens/.interp`), keeping hand-written sources.
 
 ## Part 3 — Semantic Analysis (Type checks & Functions)
-- [ ] Extend `SymbolInfo` (return type, param list/count/types — possibly separate class)
-- [ ] Type checking: assignment operand consistency, array index must be int, modulus operands int, function-call args match definition, no `void` function in expression
-- [ ] Type conversion: warning on float→int assignment; `RELOP`/`LOGOP` results are int
-- [ ] Uniqueness: declared-before-use, no duplicate declarations in same scope
-- [ ] Array index vs array usage
-- [ ] Function param count/types; definition-vs-declaration consistency; non-function used as call
-- [ ] Error-handling grammar rules for sample erroneous inputs
+- [x] Extend `SymbolInfo` (return type, param list/count/types — possibly separate class)
+- [x] Type checking: assignment operand consistency, array index must be int, modulus operands int, function-call args match definition, no `void` function in expression
+- [x] Type conversion: warning on float→int assignment; `RELOP`/`LOGOP` results are int
+- [x] Uniqueness: declared-before-use, no duplicate declarations in same scope
+- [x] Array index vs array usage
+- [x] Function param count/types; definition-vs-declaration consistency; non-function used as call
+- [x] Error-handling grammar rules for sample erroneous inputs
 
 ## Final packaging
 - [ ] Create `2205040/` zip (ID-prefixed grammar files only, no input/output/generated/exe)

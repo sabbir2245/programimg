@@ -1,4 +1,4 @@
-lexer grammar Lexer;
+lexer grammar id2205040_Lexer;
 
 @lexer::header {
     #pragma once

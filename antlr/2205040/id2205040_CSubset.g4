@@ -1,5 +1,5 @@
-grammar CSubset;
-import Lexer;
+grammar id2205040_CSubset;
+import id2205040_Lexer;
 
 start : program ;
 

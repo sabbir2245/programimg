@@ -1,4 +1,4 @@
-// Generated from /home/s/auniversity/programimg/compiler/antlr/2205040/CSubset.g4 by ANTLR 4.13.1
+// Generated from /home/s/auniversity/programimg/antlr/2205040/id2205040_Lexer.g4 by ANTLR 4.13.1
 
     #pragma once
     #include <iostream>
@@ -17,7 +17,7 @@ import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.misc.*;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast", "CheckReturnValue", "this-escape"})
-public class CSubsetLexer extends Lexer {
+public class id2205040_Lexer extends Lexer {
 	static { RuntimeMetaData.checkVersion("4.13.1", RuntimeMetaData.VERSION); }
 
 	protected static final DFA[] _decisionToDFA;
@@ -114,13 +114,13 @@ public class CSubsetLexer extends Lexer {
 	    }
 
 
-	public CSubsetLexer(CharStream input) {
+	public id2205040_Lexer(CharStream input) {
 		super(input);
 		_interp = new LexerATNSimulator(this,_ATN,_decisionToDFA,_sharedContextCache);
 	}
 
 	@Override
-	public String getGrammarFileName() { return "CSubset.g4"; }
+	public String getGrammarFileName() { return "id2205040_Lexer.g4"; }
 
 	@Override
 	public String[] getRuleNames() { return ruleNames; }

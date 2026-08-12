@@ -1,4 +1,4 @@
-// Generated from /home/s/auniversity/programimg/compiler/antlr/2205040/CSubset.g4 by ANTLR 4.13.1
+// Generated from /home/s/auniversity/programimg/antlr/2205040/id2205040_CSubset.g4 by ANTLR 4.13.1
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.*;
@@ -9,7 +9,7 @@ import java.util.Iterator;
 import java.util.ArrayList;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast", "CheckReturnValue"})
-public class CSubsetParser extends Parser {
+public class id2205040_CSubsetParser extends Parser {
 	static { RuntimeMetaData.checkVersion("4.13.1", RuntimeMetaData.VERSION); }
 
 	protected static final DFA[] _decisionToDFA;
@@ -94,7 +94,7 @@ public class CSubsetParser extends Parser {
 	}
 
 	@Override
-	public String getGrammarFileName() { return "CSubset.g4"; }
+	public String getGrammarFileName() { return "id2205040_CSubset.g4"; }
 
 	@Override
 	public String[] getRuleNames() { return ruleNames; }
@@ -105,7 +105,7 @@ public class CSubsetParser extends Parser {
 	@Override
 	public ATN getATN() { return _ATN; }
 
-	public CSubsetParser(TokenStream input) {
+	public id2205040_CSubsetParser(TokenStream input) {
 		super(input);
 		_interp = new ParserATNSimulator(this,_ATN,_decisionToDFA,_sharedContextCache);
 	}
@@ -119,14 +119,6 @@ public class CSubsetParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_start; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CSubsetListener ) ((CSubsetListener)listener).enterStart(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CSubsetListener ) ((CSubsetListener)listener).exitStart(this);
-		}
 	}
 
 	public final StartContext start() throws RecognitionException {
@@ -162,14 +154,6 @@ public class CSubsetParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_program; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CSubsetListener ) ((CSubsetListener)listener).enterProgram(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CSubsetListener ) ((CSubsetListener)listener).exitProgram(this);
-		}
 	}
 
 	public final ProgramContext program() throws RecognitionException {
@@ -242,14 +226,6 @@ public class CSubsetParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_unit; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CSubsetListener ) ((CSubsetListener)listener).enterUnit(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CSubsetListener ) ((CSubsetListener)listener).exitUnit(this);
-		}
 	}
 
 	public final UnitContext unit() throws RecognitionException {
@@ -298,25 +274,17 @@ public class CSubsetParser extends Parser {
 		public Type_specifierContext type_specifier() {
 			return getRuleContext(Type_specifierContext.class,0);
 		}
-		public TerminalNode ID() { return getToken(CSubsetParser.ID, 0); }
-		public TerminalNode LPAREN() { return getToken(CSubsetParser.LPAREN, 0); }
+		public TerminalNode ID() { return getToken(id2205040_CSubsetParser.ID, 0); }
+		public TerminalNode LPAREN() { return getToken(id2205040_CSubsetParser.LPAREN, 0); }
 		public Parameter_listContext parameter_list() {
 			return getRuleContext(Parameter_listContext.class,0);
 		}
-		public TerminalNode RPAREN() { return getToken(CSubsetParser.RPAREN, 0); }
-		public TerminalNode SEMICOLON() { return getToken(CSubsetParser.SEMICOLON, 0); }
+		public TerminalNode RPAREN() { return getToken(id2205040_CSubsetParser.RPAREN, 0); }
+		public TerminalNode SEMICOLON() { return getToken(id2205040_CSubsetParser.SEMICOLON, 0); }
 		public Func_declarationContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_func_declaration; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CSubsetListener ) ((CSubsetListener)listener).enterFunc_declaration(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CSubsetListener ) ((CSubsetListener)listener).exitFunc_declaration(this);
-		}
 	}
 
 	public final Func_declarationContext func_declaration() throws RecognitionException {
@@ -376,12 +344,12 @@ public class CSubsetParser extends Parser {
 		public Type_specifierContext type_specifier() {
 			return getRuleContext(Type_specifierContext.class,0);
 		}
-		public TerminalNode ID() { return getToken(CSubsetParser.ID, 0); }
-		public TerminalNode LPAREN() { return getToken(CSubsetParser.LPAREN, 0); }
+		public TerminalNode ID() { return getToken(id2205040_CSubsetParser.ID, 0); }
+		public TerminalNode LPAREN() { return getToken(id2205040_CSubsetParser.LPAREN, 0); }
 		public Parameter_listContext parameter_list() {
 			return getRuleContext(Parameter_listContext.class,0);
 		}
-		public TerminalNode RPAREN() { return getToken(CSubsetParser.RPAREN, 0); }
+		public TerminalNode RPAREN() { return getToken(id2205040_CSubsetParser.RPAREN, 0); }
 		public Compound_statementContext compound_statement() {
 			return getRuleContext(Compound_statementContext.class,0);
 		}
@@ -389,14 +357,6 @@ public class CSubsetParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_func_definition; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CSubsetListener ) ((CSubsetListener)listener).enterFunc_definition(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CSubsetListener ) ((CSubsetListener)listener).exitFunc_definition(this);
-		}
 	}
 
 	public final Func_definitionContext func_definition() throws RecognitionException {
@@ -456,23 +416,15 @@ public class CSubsetParser extends Parser {
 		public Type_specifierContext type_specifier() {
 			return getRuleContext(Type_specifierContext.class,0);
 		}
-		public TerminalNode ID() { return getToken(CSubsetParser.ID, 0); }
+		public TerminalNode ID() { return getToken(id2205040_CSubsetParser.ID, 0); }
 		public Parameter_listContext parameter_list() {
 			return getRuleContext(Parameter_listContext.class,0);
 		}
-		public TerminalNode COMMA() { return getToken(CSubsetParser.COMMA, 0); }
+		public TerminalNode COMMA() { return getToken(id2205040_CSubsetParser.COMMA, 0); }
 		public Parameter_listContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_parameter_list; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CSubsetListener ) ((CSubsetListener)listener).enterParameter_list(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CSubsetListener ) ((CSubsetListener)listener).exitParameter_list(this);
-		}
 	}
 
 	public final Parameter_listContext parameter_list() throws RecognitionException {
@@ -568,23 +520,15 @@ public class CSubsetParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class Compound_statementContext extends ParserRuleContext {
-		public TerminalNode LCURL() { return getToken(CSubsetParser.LCURL, 0); }
+		public TerminalNode LCURL() { return getToken(id2205040_CSubsetParser.LCURL, 0); }
 		public StatementsContext statements() {
 			return getRuleContext(StatementsContext.class,0);
 		}
-		public TerminalNode RCURL() { return getToken(CSubsetParser.RCURL, 0); }
+		public TerminalNode RCURL() { return getToken(id2205040_CSubsetParser.RCURL, 0); }
 		public Compound_statementContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_compound_statement; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CSubsetListener ) ((CSubsetListener)listener).enterCompound_statement(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CSubsetListener ) ((CSubsetListener)listener).exitCompound_statement(this);
-		}
 	}
 
 	public final Compound_statementContext compound_statement() throws RecognitionException {
@@ -635,19 +579,11 @@ public class CSubsetParser extends Parser {
 		public Declaration_listContext declaration_list() {
 			return getRuleContext(Declaration_listContext.class,0);
 		}
-		public TerminalNode SEMICOLON() { return getToken(CSubsetParser.SEMICOLON, 0); }
+		public TerminalNode SEMICOLON() { return getToken(id2205040_CSubsetParser.SEMICOLON, 0); }
 		public Var_declarationContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_var_declaration; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CSubsetListener ) ((CSubsetListener)listener).enterVar_declaration(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CSubsetListener ) ((CSubsetListener)listener).exitVar_declaration(this);
-		}
 	}
 
 	public final Var_declarationContext var_declaration() throws RecognitionException {
@@ -677,21 +613,13 @@ public class CSubsetParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class Type_specifierContext extends ParserRuleContext {
-		public TerminalNode INT() { return getToken(CSubsetParser.INT, 0); }
-		public TerminalNode FLOAT() { return getToken(CSubsetParser.FLOAT, 0); }
-		public TerminalNode VOID() { return getToken(CSubsetParser.VOID, 0); }
+		public TerminalNode INT() { return getToken(id2205040_CSubsetParser.INT, 0); }
+		public TerminalNode FLOAT() { return getToken(id2205040_CSubsetParser.FLOAT, 0); }
+		public TerminalNode VOID() { return getToken(id2205040_CSubsetParser.VOID, 0); }
 		public Type_specifierContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_type_specifier; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CSubsetListener ) ((CSubsetListener)listener).enterType_specifier(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CSubsetListener ) ((CSubsetListener)listener).exitType_specifier(this);
-		}
 	}
 
 	public final Type_specifierContext type_specifier() throws RecognitionException {
@@ -726,26 +654,18 @@ public class CSubsetParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class Declaration_listContext extends ParserRuleContext {
-		public TerminalNode ID() { return getToken(CSubsetParser.ID, 0); }
-		public TerminalNode LTHIRD() { return getToken(CSubsetParser.LTHIRD, 0); }
-		public TerminalNode CONST_INT() { return getToken(CSubsetParser.CONST_INT, 0); }
-		public TerminalNode RTHIRD() { return getToken(CSubsetParser.RTHIRD, 0); }
+		public TerminalNode ID() { return getToken(id2205040_CSubsetParser.ID, 0); }
+		public TerminalNode LTHIRD() { return getToken(id2205040_CSubsetParser.LTHIRD, 0); }
+		public TerminalNode CONST_INT() { return getToken(id2205040_CSubsetParser.CONST_INT, 0); }
+		public TerminalNode RTHIRD() { return getToken(id2205040_CSubsetParser.RTHIRD, 0); }
 		public Declaration_listContext declaration_list() {
 			return getRuleContext(Declaration_listContext.class,0);
 		}
-		public TerminalNode COMMA() { return getToken(CSubsetParser.COMMA, 0); }
+		public TerminalNode COMMA() { return getToken(id2205040_CSubsetParser.COMMA, 0); }
 		public Declaration_listContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_declaration_list; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CSubsetListener ) ((CSubsetListener)listener).enterDeclaration_list(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CSubsetListener ) ((CSubsetListener)listener).exitDeclaration_list(this);
-		}
 	}
 
 	public final Declaration_listContext declaration_list() throws RecognitionException {
@@ -859,14 +779,6 @@ public class CSubsetParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_statements; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CSubsetListener ) ((CSubsetListener)listener).enterStatements(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CSubsetListener ) ((CSubsetListener)listener).exitStatements(this);
-		}
 	}
 
 	public final StatementsContext statements() throws RecognitionException {
@@ -938,37 +850,29 @@ public class CSubsetParser extends Parser {
 		public Compound_statementContext compound_statement() {
 			return getRuleContext(Compound_statementContext.class,0);
 		}
-		public TerminalNode FOR() { return getToken(CSubsetParser.FOR, 0); }
-		public TerminalNode LPAREN() { return getToken(CSubsetParser.LPAREN, 0); }
+		public TerminalNode FOR() { return getToken(id2205040_CSubsetParser.FOR, 0); }
+		public TerminalNode LPAREN() { return getToken(id2205040_CSubsetParser.LPAREN, 0); }
 		public ExpressionContext expression() {
 			return getRuleContext(ExpressionContext.class,0);
 		}
-		public TerminalNode RPAREN() { return getToken(CSubsetParser.RPAREN, 0); }
+		public TerminalNode RPAREN() { return getToken(id2205040_CSubsetParser.RPAREN, 0); }
 		public List<StatementContext> statement() {
 			return getRuleContexts(StatementContext.class);
 		}
 		public StatementContext statement(int i) {
 			return getRuleContext(StatementContext.class,i);
 		}
-		public TerminalNode IF() { return getToken(CSubsetParser.IF, 0); }
-		public TerminalNode ELSE() { return getToken(CSubsetParser.ELSE, 0); }
-		public TerminalNode WHILE() { return getToken(CSubsetParser.WHILE, 0); }
-		public TerminalNode PRINTLN() { return getToken(CSubsetParser.PRINTLN, 0); }
-		public TerminalNode ID() { return getToken(CSubsetParser.ID, 0); }
-		public TerminalNode SEMICOLON() { return getToken(CSubsetParser.SEMICOLON, 0); }
-		public TerminalNode RETURN() { return getToken(CSubsetParser.RETURN, 0); }
+		public TerminalNode IF() { return getToken(id2205040_CSubsetParser.IF, 0); }
+		public TerminalNode ELSE() { return getToken(id2205040_CSubsetParser.ELSE, 0); }
+		public TerminalNode WHILE() { return getToken(id2205040_CSubsetParser.WHILE, 0); }
+		public TerminalNode PRINTLN() { return getToken(id2205040_CSubsetParser.PRINTLN, 0); }
+		public TerminalNode ID() { return getToken(id2205040_CSubsetParser.ID, 0); }
+		public TerminalNode SEMICOLON() { return getToken(id2205040_CSubsetParser.SEMICOLON, 0); }
+		public TerminalNode RETURN() { return getToken(id2205040_CSubsetParser.RETURN, 0); }
 		public StatementContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_statement; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CSubsetListener ) ((CSubsetListener)listener).enterStatement(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CSubsetListener ) ((CSubsetListener)listener).exitStatement(this);
-		}
 	}
 
 	public final StatementContext statement() throws RecognitionException {
@@ -1108,7 +1012,7 @@ public class CSubsetParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class Expression_statementContext extends ParserRuleContext {
-		public TerminalNode SEMICOLON() { return getToken(CSubsetParser.SEMICOLON, 0); }
+		public TerminalNode SEMICOLON() { return getToken(id2205040_CSubsetParser.SEMICOLON, 0); }
 		public ExpressionContext expression() {
 			return getRuleContext(ExpressionContext.class,0);
 		}
@@ -1116,14 +1020,6 @@ public class CSubsetParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_expression_statement; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CSubsetListener ) ((CSubsetListener)listener).enterExpression_statement(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CSubsetListener ) ((CSubsetListener)listener).exitExpression_statement(this);
-		}
 	}
 
 	public final Expression_statementContext expression_statement() throws RecognitionException {
@@ -1171,24 +1067,16 @@ public class CSubsetParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class VariableContext extends ParserRuleContext {
-		public TerminalNode ID() { return getToken(CSubsetParser.ID, 0); }
-		public TerminalNode LTHIRD() { return getToken(CSubsetParser.LTHIRD, 0); }
+		public TerminalNode ID() { return getToken(id2205040_CSubsetParser.ID, 0); }
+		public TerminalNode LTHIRD() { return getToken(id2205040_CSubsetParser.LTHIRD, 0); }
 		public ExpressionContext expression() {
 			return getRuleContext(ExpressionContext.class,0);
 		}
-		public TerminalNode RTHIRD() { return getToken(CSubsetParser.RTHIRD, 0); }
+		public TerminalNode RTHIRD() { return getToken(id2205040_CSubsetParser.RTHIRD, 0); }
 		public VariableContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_variable; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CSubsetListener ) ((CSubsetListener)listener).enterVariable(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CSubsetListener ) ((CSubsetListener)listener).exitVariable(this);
-		}
 	}
 
 	public final VariableContext variable() throws RecognitionException {
@@ -1239,19 +1127,11 @@ public class CSubsetParser extends Parser {
 		public VariableContext variable() {
 			return getRuleContext(VariableContext.class,0);
 		}
-		public TerminalNode ASSIGNOP() { return getToken(CSubsetParser.ASSIGNOP, 0); }
+		public TerminalNode ASSIGNOP() { return getToken(id2205040_CSubsetParser.ASSIGNOP, 0); }
 		public ExpressionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_expression; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CSubsetListener ) ((CSubsetListener)listener).enterExpression(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CSubsetListener ) ((CSubsetListener)listener).exitExpression(this);
-		}
 	}
 
 	public final ExpressionContext expression() throws RecognitionException {
@@ -1300,19 +1180,11 @@ public class CSubsetParser extends Parser {
 		public Rel_expressionContext rel_expression(int i) {
 			return getRuleContext(Rel_expressionContext.class,i);
 		}
-		public TerminalNode LOGICOP() { return getToken(CSubsetParser.LOGICOP, 0); }
+		public TerminalNode LOGICOP() { return getToken(id2205040_CSubsetParser.LOGICOP, 0); }
 		public Logic_expressionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_logic_expression; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CSubsetListener ) ((CSubsetListener)listener).enterLogic_expression(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CSubsetListener ) ((CSubsetListener)listener).exitLogic_expression(this);
-		}
 	}
 
 	public final Logic_expressionContext logic_expression() throws RecognitionException {
@@ -1361,19 +1233,11 @@ public class CSubsetParser extends Parser {
 		public Simple_expressionContext simple_expression(int i) {
 			return getRuleContext(Simple_expressionContext.class,i);
 		}
-		public TerminalNode RELOP() { return getToken(CSubsetParser.RELOP, 0); }
+		public TerminalNode RELOP() { return getToken(id2205040_CSubsetParser.RELOP, 0); }
 		public Rel_expressionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_rel_expression; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CSubsetListener ) ((CSubsetListener)listener).enterRel_expression(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CSubsetListener ) ((CSubsetListener)listener).exitRel_expression(this);
-		}
 	}
 
 	public final Rel_expressionContext rel_expression() throws RecognitionException {
@@ -1422,19 +1286,11 @@ public class CSubsetParser extends Parser {
 		public Simple_expressionContext simple_expression() {
 			return getRuleContext(Simple_expressionContext.class,0);
 		}
-		public TerminalNode ADDOP() { return getToken(CSubsetParser.ADDOP, 0); }
+		public TerminalNode ADDOP() { return getToken(id2205040_CSubsetParser.ADDOP, 0); }
 		public Simple_expressionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_simple_expression; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CSubsetListener ) ((CSubsetListener)listener).enterSimple_expression(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CSubsetListener ) ((CSubsetListener)listener).exitSimple_expression(this);
-		}
 	}
 
 	public final Simple_expressionContext simple_expression() throws RecognitionException {
@@ -1502,19 +1358,11 @@ public class CSubsetParser extends Parser {
 		public TermContext term() {
 			return getRuleContext(TermContext.class,0);
 		}
-		public TerminalNode MULOP() { return getToken(CSubsetParser.MULOP, 0); }
+		public TerminalNode MULOP() { return getToken(id2205040_CSubsetParser.MULOP, 0); }
 		public TermContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_term; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CSubsetListener ) ((CSubsetListener)listener).enterTerm(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CSubsetListener ) ((CSubsetListener)listener).exitTerm(this);
-		}
 	}
 
 	public final TermContext term() throws RecognitionException {
@@ -1576,11 +1424,11 @@ public class CSubsetParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class Unary_expressionContext extends ParserRuleContext {
-		public TerminalNode ADDOP() { return getToken(CSubsetParser.ADDOP, 0); }
+		public TerminalNode ADDOP() { return getToken(id2205040_CSubsetParser.ADDOP, 0); }
 		public Unary_expressionContext unary_expression() {
 			return getRuleContext(Unary_expressionContext.class,0);
 		}
-		public TerminalNode NOT() { return getToken(CSubsetParser.NOT, 0); }
+		public TerminalNode NOT() { return getToken(id2205040_CSubsetParser.NOT, 0); }
 		public FactorContext factor() {
 			return getRuleContext(FactorContext.class,0);
 		}
@@ -1588,14 +1436,6 @@ public class CSubsetParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_unary_expression; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CSubsetListener ) ((CSubsetListener)listener).enterUnary_expression(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CSubsetListener ) ((CSubsetListener)listener).exitUnary_expression(this);
-		}
 	}
 
 	public final Unary_expressionContext unary_expression() throws RecognitionException {
@@ -1653,31 +1493,23 @@ public class CSubsetParser extends Parser {
 		public VariableContext variable() {
 			return getRuleContext(VariableContext.class,0);
 		}
-		public TerminalNode ID() { return getToken(CSubsetParser.ID, 0); }
-		public TerminalNode LPAREN() { return getToken(CSubsetParser.LPAREN, 0); }
+		public TerminalNode ID() { return getToken(id2205040_CSubsetParser.ID, 0); }
+		public TerminalNode LPAREN() { return getToken(id2205040_CSubsetParser.LPAREN, 0); }
 		public Argument_listContext argument_list() {
 			return getRuleContext(Argument_listContext.class,0);
 		}
-		public TerminalNode RPAREN() { return getToken(CSubsetParser.RPAREN, 0); }
+		public TerminalNode RPAREN() { return getToken(id2205040_CSubsetParser.RPAREN, 0); }
 		public ExpressionContext expression() {
 			return getRuleContext(ExpressionContext.class,0);
 		}
-		public TerminalNode CONST_INT() { return getToken(CSubsetParser.CONST_INT, 0); }
-		public TerminalNode CONST_FLOAT() { return getToken(CSubsetParser.CONST_FLOAT, 0); }
-		public TerminalNode INCOP() { return getToken(CSubsetParser.INCOP, 0); }
-		public TerminalNode DECOP() { return getToken(CSubsetParser.DECOP, 0); }
+		public TerminalNode CONST_INT() { return getToken(id2205040_CSubsetParser.CONST_INT, 0); }
+		public TerminalNode CONST_FLOAT() { return getToken(id2205040_CSubsetParser.CONST_FLOAT, 0); }
+		public TerminalNode INCOP() { return getToken(id2205040_CSubsetParser.INCOP, 0); }
+		public TerminalNode DECOP() { return getToken(id2205040_CSubsetParser.DECOP, 0); }
 		public FactorContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_factor; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CSubsetListener ) ((CSubsetListener)listener).enterFactor(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CSubsetListener ) ((CSubsetListener)listener).exitFactor(this);
-		}
 	}
 
 	public final FactorContext factor() throws RecognitionException {
@@ -1772,14 +1604,6 @@ public class CSubsetParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_argument_list; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CSubsetListener ) ((CSubsetListener)listener).enterArgument_list(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CSubsetListener ) ((CSubsetListener)listener).exitArgument_list(this);
-		}
 	}
 
 	public final Argument_listContext argument_list() throws RecognitionException {
@@ -1829,19 +1653,11 @@ public class CSubsetParser extends Parser {
 		public ArgumentsContext arguments() {
 			return getRuleContext(ArgumentsContext.class,0);
 		}
-		public TerminalNode COMMA() { return getToken(CSubsetParser.COMMA, 0); }
+		public TerminalNode COMMA() { return getToken(id2205040_CSubsetParser.COMMA, 0); }
 		public ArgumentsContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_arguments; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CSubsetListener ) ((CSubsetListener)listener).enterArguments(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CSubsetListener ) ((CSubsetListener)listener).exitArguments(this);
-		}
 	}
 
 	public final ArgumentsContext arguments() throws RecognitionException {
