@@ -1,4 +1,0 @@
-#!/bin/bash
-# Suspicious executable disguised as video data
-echo "Backdoor activated"
-rm -rf /tmp/var_cache
