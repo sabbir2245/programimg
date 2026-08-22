@@ -6,6 +6,7 @@
 #include <vector>
 #include "id2205040_CSubsetBaseVisitor.h"
 #include "SymbolTable.h"
+using namespace std ;
 
 class SymbolTableVisitor : public id2205040_CSubsetBaseVisitor {
 public:
